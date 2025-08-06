@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    index
+    Index
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
 
       <div class="mt-4">
         <div class="text-center">
-          <button type="button" class="btn btn-success  ">Crete Post</button>
+          <a href="{{route('posts.create')}}"  class="btn btn-success">Crete Post</a>
         </div>
       </div>
 
@@ -34,8 +34,14 @@
               <td>{{$post['created_at']}}</td>
               <td>
                 <a href="{{route('posts.show', $post['id'])}}" class="btn btn-info">View</a>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="{{route('posts.edit', $post['id'])}}" class="btn btn-primary">Edit</a>
+               <form style="display: inline" action="{{ route('posts.destroy', $post['id']) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete post #{{ $post['id'] }}?')">
+                 @csrf
+                 @method('DELETE')
+                 <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+                
               </td>
             </tr>
             @endforeach
