@@ -30,7 +30,7 @@
             <tr>
               <td>{{$post['id']}}</td>
               <td>{{$post['title']}}</td>
-              <th>{{$post['posted_by']}}</th>
+              <th>{{$post->postCreator->name}}</th>
               <td>{{$post['created_at']}}</td>
               <td>
                 <a href="{{route('posts.show', $post['id'])}}" class="btn btn-info">View</a>
