@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">Title: {{ $post['title']}}</h5>
-          <p class="card-text">Description: {{ $post['text']}}</p>
+          <p class="card-text">Description: {{ $post['content']}}</p>
         </div>
       </div>
 
