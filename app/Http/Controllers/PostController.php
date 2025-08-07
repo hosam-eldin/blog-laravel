@@ -40,7 +40,12 @@ class PostController extends Controller
 
     public function store(){
         
-       $data = request()->all();
+    //    $data = request()->all();
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'content' => ['required','min:10'],
+        'posted_by' => ['required', 'exists:users,id']
+    ]);    
 
        $title = request()->title;
        $content = request()->content;
@@ -64,6 +69,12 @@ class PostController extends Controller
     }
 
     public function update($postId){
+
+         request()->validate([
+        'title' => ['required', 'min:3'],
+        'content' => ['required','min:10'],
+        'posted_by' => ['required', 'exists:users,id']
+    ]);  
 
         $new_title = request()->title;
        $new_content = request()->content;
