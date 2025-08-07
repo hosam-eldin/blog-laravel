@@ -54,7 +54,8 @@ class PostController extends Controller
     
     Post::create([
         'title' => $title,
-        'content' => $content
+        'content' => $content,
+        'user_id' => $posted_by
     ]);
 
        
@@ -71,7 +72,8 @@ class PostController extends Controller
        $singlePostFromDB = Post::find($postId);
        $singlePostFromDB->update([
         'title'=>$new_title,
-        'content'=>$new_content
+        'content'=>$new_content,
+        'user_id' => $new_posted_by
        ]);
 
         return redirect()->route('posts.show', $postId);
